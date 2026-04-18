@@ -73,3 +73,6 @@ Amadou — Software Engineering Bootcamp Student
 
 ## Live Demo
 [SearchWave Live](https://amadoubachirs27-lab.github.io/giphy-search-engine)
+
+## Last Updated
+April 2026
