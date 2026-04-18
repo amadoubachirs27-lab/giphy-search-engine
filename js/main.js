@@ -1,3 +1,4 @@
+// Version: 1.0.0
 // ============================================
 // main.js — SearchWave
 // Main logic: search & display results
