@@ -1,0 +1,218 @@
+// ============================================
+// style.scss — SearchWave
+// Compilé vers css/style.css avec SASS
+// ============================================
+
+// ===== VARIABLES =====
+$color-bg:       #0d0d0d;
+$color-surface:  #1a1a1a;
+$color-accent:   #e8ff4d;
+$color-accent-2: #4dffb4;
+$color-text:     #f0f0f0;
+$color-muted:    #888;
+$color-border:   #2a2a2a;
+
+$font-title: 'Syne', sans-serif;
+$font-body:  'DM Sans', sans-serif;
+
+$radius:     12px;
+$transition: 0.25s ease;
+
+// ===== RESET =====
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $color-bg;
+  color: $color-text;
+  font-family: $font-body;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: $radius;
+}
+
+// ===== HEADER =====
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2.5rem;
+  border-bottom: 1px solid $color-border;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(13, 13, 13, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.site-title {
+  font-family: $font-title;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: $color-accent;
+  letter-spacing: -0.03em;
+}
+
+.site-nav {
+  ul { display: flex; gap: 2rem; }
+
+  a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: $color-muted;
+    transition: color $transition;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $color-accent;
+      transition: width $transition;
+    }
+
+    &:hover, &.active {
+      color: $color-text;
+      &::after { width: 100%; }
+    }
+  }
+}
+
+// ===== HERO =====
+.hero {
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+}
+
+.hero-subtitle {
+  font-family: $font-title;
+  font-size: 1rem;
+  color: $color-muted;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+// ===== SEARCH BAR =====
+.search-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+#search-input {
+  flex: 1;
+  padding: 0.85rem 1.25rem;
+  border: 2px solid $color-border;
+  border-radius: $radius;
+  background: $color-surface;
+  color: $color-text;
+  font-family: $font-body;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color $transition;
+
+  &:focus { border-color: $color-accent; }
+  &::placeholder { color: $color-muted; }
+}
+
+#search-btn {
+  padding: 0.85rem 1.75rem;
+  background: $color-accent;
+  color: #0d0d0d;
+  border: none;
+  border-radius: $radius;
+  font-family: $font-title;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background $transition, transform $transition;
+
+  &:hover {
+    background: $color-accent-2;
+    transform: translateY(-2px);
+  }
+  &:active { transform: translateY(0); }
+}
+
+// ===== GRID (classes maison avec flex) =====
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@mixin col($size) {
+  flex: 0 0 calc(#{$size} - 1rem);
+  max-width: calc(#{$size} - 1rem);
+}
+
+.col-3  { @include col(25%); min-height: 200px; overflow: hidden; border-radius: $radius; background: $color-surface; border: 1px solid $color-border; transition: transform $transition, border-color $transition; &:hover { transform: scale(1.02); border-color: $color-accent; } }
+.col-4  { @include col(33.333%); }
+.col-6  { @include col(50%); }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+// ===== EMPTY STATE =====
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: $color-muted;
+  font-size: 1.1rem;
+}
+
+// ===== FOOTER =====
+.site-footer {
+  text-align: center;
+  padding: 1.25rem;
+  border-top: 1px solid $color-border;
+  color: $color-muted;
+  font-size: 0.8rem;
+}
+
+// ===== MEDIA QUERIES =====
+@media (max-width: 320px) {
+  .site-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .col-3, .col-4, .col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .search-bar { flex-direction: column; }
+  #search-btn { width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .col-3 { @include col(50%); }
+}
