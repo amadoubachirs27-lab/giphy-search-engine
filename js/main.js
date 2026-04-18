@@ -22,7 +22,7 @@ async function searchContent(keyword) {
   showLoading();
 
   try {
-    const url = `${BASE_URL}?api_key=${API_KEY}&q=${encodeURIComponent(keyword)}&limit=20`;
+    const url = `${BASE_URL}?api_key=${API_KEY}&q=${encodeURIComponent(keyword)}&limit=24`;
     const response = await fetch(url);
 
     if (!response.ok) {
