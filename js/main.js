@@ -75,7 +75,7 @@ function displayResults(items, keyword) {
 
 // ===== LOADING STATE =====
 function showLoading() {
-  resultsGrid.innerHTML = '<div class="loading">Loading...</div>';
+  resultsGrid.innerHTML = '<div class="loading">Searching GIFs...</div>';
   emptyState.style.display = 'none';
   resultsCount.textContent = '';
 }
