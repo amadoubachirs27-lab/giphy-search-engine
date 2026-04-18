@@ -68,3 +68,8 @@ SearchWave is a GIF search engine built with HTML, CSS, and JavaScript. It allow
 ## Author
 
 Amadou — Software Engineering Bootcamp Student
+
+## Live Demo
+
+## Live Demo
+[SearchWave Live](https://amadoubachirs27-lab.github.io/giphy-search-engine)
