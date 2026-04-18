@@ -97,3 +97,7 @@ searchInput.addEventListener('keydown', (event) => {
     searchContent(searchInput.value);
   }
 });
+/* Print styles */
+@media print {
+  .site-nav, .search-bar, #search-btn { display: none; }
+}
